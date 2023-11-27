@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD          17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
+option(ENABLE_TESTING "Enable testing" ON)
+
 set(LIBRARY_NAME    Library)
 set(EXECUTABLE_NAME Executable)
 
@@ -37,7 +39,7 @@ FetchContent_Declare(
     GIT_SHALLOW     TRUE)
 FetchContent_MakeAvailable(Catch2)
 
-# add_git_submodule(external/json)
 add_subdirectory(configured)
 add_subdirectory(src)
 add_subdirectory(app)
+add_subdirectory(tests)

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include <spdlog/spdlog.h>
 #include <nlohmann/json.hpp>
@@ -23,4 +24,13 @@ void print_hello_world() {
         << CATCH_VERSION_MAJOR << "."
         << CATCH_VERSION_MINOR << "."
         << CATCH_VERSION_PATCH << std::endl;
+
+    std::shared_ptr<int> ptr = std::make_shared<int>(42);
+    std::unique_ptr<int> ptr2 = std::make_unique<int>(42);
+
+    std::cout << *ptr + *ptr2 << std::endl;
+}
+
+std::uint32_t factorial(std::uint32_t number) {
+    return number <= 1 ? number : factorial(number - 1) * number;
 }
