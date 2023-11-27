@@ -13,6 +13,9 @@ option(ENABLE_TESTING "Enable testing" ON)
 option(ENABLE_WARNINGS "Enable warnings" ON)
 option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
 
+option(ENABLE_ADDRESS_SANITIZER "Enable address sanitizer" ON)
+option(ENABLE_UNDEFINED_SANITIZER "Enable undefined sanitizer" ON)
+
 set(LIBRARY_NAME    Library)
 set(EXECUTABLE_NAME Executable)
 
@@ -22,6 +25,11 @@ include(FetchContent)
 
 if(${ENABLE_WARNINGS})
     include(Warnings)
+endif()
+
+if(${ENABLE_ADDRESS_SANITIZER} OR ${ENABLE_UNDEFINED_SANITIZER})
+    include(Sanitizers)
+    add_sanitizer_flags()
 endif()
 
 FetchContent_Declare(
