@@ -16,6 +16,8 @@ option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
 option(ENABLE_ADDRESS_SANITIZER "Enable address sanitizer" ON)
 option(ENABLE_UNDEFINED_SANITIZER "Enable undefined sanitizer" ON)
 
+option(ENABLE_LTO "Enable link time optimization" ON)
+
 set(LIBRARY_NAME    Library)
 set(EXECUTABLE_NAME Executable)
 
@@ -30,6 +32,10 @@ endif()
 if(${ENABLE_ADDRESS_SANITIZER} OR ${ENABLE_UNDEFINED_SANITIZER})
     include(Sanitizers)
     add_sanitizer_flags()
+endif()
+
+if(${ENABLE_LTO})
+    include(LTO)
 endif()
 
 FetchContent_Declare(
