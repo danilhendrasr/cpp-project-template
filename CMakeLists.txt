@@ -10,6 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
 option(ENABLE_TESTING "Enable testing" ON)
+option(ENABLE_WARNINGS "Enable warnings" ON)
+option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
 
 set(LIBRARY_NAME    Library)
 set(EXECUTABLE_NAME Executable)
@@ -17,6 +19,10 @@ set(EXECUTABLE_NAME Executable)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(AddGitSubmodule)
 include(FetchContent)
+
+if(${ENABLE_WARNINGS})
+    include(Warnings)
+endif()
 
 FetchContent_Declare(
     nlohmann_json

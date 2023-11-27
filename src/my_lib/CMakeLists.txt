@@ -12,3 +12,9 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC
     spdlog::spdlog
     nlohmann_json::nlohmann_json
     Catch2::Catch2)
+
+if(${ENABLE_WARNINGS})
+    target_set_warnings(${LIBRARY_NAME} 
+        ${ENABLE_WARNINGS} 
+        ${ENABLE_WARNINGS_AS_ERRORS})
+endif()
