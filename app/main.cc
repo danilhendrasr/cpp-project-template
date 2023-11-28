@@ -1,19 +1,17 @@
+#include "config.hpp"
+#include "my_lib.h"
 #include <iostream>
-
 #include <nlohmann/json.hpp>
 
-#include "my_lib.h"
-#include "config.hpp"
-
 int main() {
-    print_hello_world();
-    std::cout << "Project name: " << project_name << std::endl;
-    std::cout << "Project version: " << project_version << std::endl;
+  print_hello_world();
 
-    std::cout << "JSON lib version: "
-        << NLOHMANN_JSON_VERSION_MAJOR << "."
-        << NLOHMANN_JSON_VERSION_MINOR << "."
-        << NLOHMANN_JSON_VERSION_PATCH << std::endl;
+  std::cout << "Project name: " << project_name << std::endl;
+  std::cout << "Project version: " << project_version << std::endl;
 
-    return 0;
+  std::cout << "JSON lib version: " << NLOHMANN_JSON_VERSION_MAJOR << "."
+            << NLOHMANN_JSON_VERSION_MINOR << "." << NLOHMANN_JSON_VERSION_PATCH
+            << std::endl;
+
+  return 0;
 }
